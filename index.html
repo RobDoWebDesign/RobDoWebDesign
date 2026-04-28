@@ -18,6 +18,9 @@
     
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- Main Interaction Engine -->
+    <script src="js/main.js" defer></script>
 </head>
 <body>
 
@@ -26,15 +29,15 @@
         <div class="nav-overlay" id="nav-overlay"></div>
         <div class="container nav-wrapper">
             <a href="index.html" class="logo">
-                <img src="assets/pfp.png" alt="RobDoWebDesign Logo" class="logo-img">
+                <img src="assets/pfp.png" alt="RobDoWebDesign Logo" class="logo-img" width="50" height="50" fetchpriority="high">
             </a>
-            <ul class="nav-links">
+            <ul class="nav-links" id="nav-links">
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="pricing.html">Process</a></li>
                 <li><a href="contact.html" class="btn-nav">Start Your Project</a></li>
             </ul>
-            <div class="mobile-toggle" id="mobile-menu">
+            <div class="mobile-toggle" id="mobile-menu" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-links">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -107,19 +110,17 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <a href="index.html" class="logo">
-                        <img src="assets/pfp.png" alt="RobDoWebDesign Logo" class="logo-img">
+                        <img src="assets/pfp.png" alt="RobDoWebDesign Logo" class="logo-img" width="50" height="50" loading="lazy">
                     </a>
                     <p>High-end web design for those who refuse to be average.</p>
                 </div>
                 <div class="footer-contact">
-                    <h4>Contact</h4>
+                    <h3>Contact</h3>
                     <p>Ontario, Canada</p>
                     <a href="mailto:RobDoWebDesign@gmail.com">RobDoWebDesign@gmail.com</a>
                 </div>
             </div>
         </div>
     </footer>
-
-    <script src="js/main.js"></script>
 </body>
 </html>
