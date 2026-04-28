@@ -12,40 +12,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const navbar = document.querySelector('.navbar');
 
     if (mobileMenu && navLinks && navOverlay) {
+        const toggleMenu = (isOpen) => {
+            mobileMenu.classList.toggle('active', isOpen);
+            navLinks.classList.toggle('active', isOpen);
+            navOverlay.classList.toggle('active', isOpen);
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+            document.body.classList.toggle('nav-active', isOpen);
+            mobileMenu.setAttribute('aria-expanded', isOpen);
+        };
+
         mobileMenu.addEventListener('click', () => {
-            // Toggles the hamburger icon state and the nav visibility
-            mobileMenu.classList.toggle('active');
-            navLinks.classList.toggle('active');
-            navOverlay.classList.toggle('active');
-            
-            // Prevent scrolling on the body when the mobile menu is open
-            if (navLinks.classList.contains('active')) {
-                document.body.style.overflow = 'hidden';
-                document.body.classList.add('nav-active');
-            } else {
-                document.body.style.overflow = '';
-                document.body.classList.remove('nav-active');
-            }
+            const isOpen = !navLinks.classList.contains('active');
+            toggleMenu(isOpen);
         });
 
         // Close menu when clicking overlay
-        navOverlay.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-            navLinks.classList.remove('active');
-            navOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-            document.body.classList.remove('nav-active');
-        });
+        navOverlay.addEventListener('click', () => toggleMenu(false));
 
         // Close mobile menu when a link is clicked
         navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-                navLinks.classList.remove('active');
-                navOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-                document.body.classList.remove('nav-active');
-            });
+            link.addEventListener('click', () => toggleMenu(false));
         });
     }
 
